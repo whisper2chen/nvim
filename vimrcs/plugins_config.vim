@@ -23,9 +23,12 @@ Plug 'skywind3000/gutentags_plus'
 " complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-
 "vim easy align
 Plug 'junegunn/vim-easy-align'
+
+"snippetse
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Initialize plugin system
 call plug#end()
 
