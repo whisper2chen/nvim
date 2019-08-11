@@ -22,6 +22,10 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 " complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+
+"vim easy align
+Plug 'junegunn/vim-easy-align'
 " Initialize plugin system
 call plug#end()
 
@@ -115,3 +119,11 @@ endif
 " => deoplete configs 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-easy-align configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" none use vip :EasyAlign=
