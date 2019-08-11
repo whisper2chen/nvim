@@ -4,6 +4,6 @@
 
 Install:
 
-    git clone xxx ~/.config/nvim
+    git clone https://github.com/whisper2chen/nvim.git  ~/.config/nvim
     nvim +PlugInstall +qall
 
