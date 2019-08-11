@@ -21,8 +21,11 @@ set guioptions-=l
 set guioptions-=L
 
 " Colorscheme
+try
+    colorscheme onedark
+catch
+endtry
 set background=dark
-colorscheme onedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
