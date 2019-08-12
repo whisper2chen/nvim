@@ -22,7 +22,7 @@ set guioptions-=L
 
 " Colorscheme
 try
-    colorscheme onedark
+    colorscheme molokai
 catch
 endtry
 set background=dark

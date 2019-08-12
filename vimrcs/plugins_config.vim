@@ -10,8 +10,15 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
+
+" welcome page
+Plug 'mhinz/vim-startify'
+
 " status line
 Plug 'vim-airline/vim-airline'
+
+" nerdtree
+Plug 'scrooloose/nerdtree'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -20,11 +27,17 @@ Plug 'junegunn/fzf.vim'
 " tags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
+
+" tagbar
+Plug 'majutsushi/tagbar'
+
 " complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "vim easy align
 Plug 'junegunn/vim-easy-align'
+"vim easy motion
+Plug 'easymotion/vim-easymotion'
 
 "snippetse
 Plug 'SirVer/ultisnips'
@@ -130,3 +143,31 @@ let g:deoplete#enable_at_startup = 1
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " none use vip :EasyAlign=
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => nerdtree configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <F3> :NERDTreeToggle<cr>
+let g:NERDTreeWinPos = "right"
+"Making it prettier
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$']
+let g:NERDTreeWinSize=35
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tagbar configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <F2> :TagbarToggle<cr>
+let g:tagbar_left = 1
