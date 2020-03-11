@@ -8,8 +8,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " themes
 Plug 'tomasr/molokai'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
 
 " welcome page
 Plug 'mhinz/vim-startify'
@@ -24,24 +22,17 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" tags
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
-
 " tagbar
 Plug 'majutsushi/tagbar'
 
-" complete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 "vim easy align
 Plug 'junegunn/vim-easy-align'
-"vim easy motion
-Plug 'easymotion/vim-easymotion'
 
-"snippetse
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Auto Pair
+Plug 'jiangmiao/auto-pairs'
+
+"Vim go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 " Initialize plugin system
 call plug#end()
 
@@ -100,41 +91,6 @@ let g:fzf_tags_command = 'ctags --languages=c,c++ -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-gutentags  gutentags_plus configs 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" enable gtags module
-let g:gutentags_modules = ['ctags', 'gtags_cscope']
-
-" config project root markers.
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-
-"所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
-
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-
-" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-" change focus to quickfix window after search (optional).
-let g:gutentags_plus_switch = 1
-" 检测 ~/.cache/tags 不存在就新建
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => deoplete configs 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
 
 
 
