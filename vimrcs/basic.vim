@@ -116,10 +116,9 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme molokai
+    colorscheme gruvbox
 catch
 endtry
-
 set background=dark
 
 " Set extra options when running in GUI mode

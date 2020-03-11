@@ -8,12 +8,14 @@ call plug#begin('~/.config/nvim/plugged')
 
 " themes
 Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
 " welcome page
 Plug 'mhinz/vim-startify'
 
 " status line
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " nerdtree
 Plug 'scrooloose/nerdtree'
@@ -28,11 +30,26 @@ Plug 'majutsushi/tagbar'
 "vim easy align
 Plug 'junegunn/vim-easy-align'
 
+"vim comment
+Plug 'tpope/vim-commentary'
+
+"
 "Auto Pair
 Plug 'jiangmiao/auto-pairs'
 
 "Vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+"coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"ale
+Plug 'dense-analysis/ale'
+"
+"Snippet
+"
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Initialize plugin system
 call plug#end()
 
@@ -127,3 +144,71 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <F2> :TagbarToggle<cr>
 let g:tagbar_left = 1
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim go configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = 'goimports'
+let g:go_autodetect_gopath = 1
+" let g:go_bin_path = '$GOBIN'
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+augroup END
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => coc.nvim configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ale configs 
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ale-setting {{{
+let g:ale_set_highlights = 1
+let g:ale_set_quickfix = 1
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"打开文件时不进行检查
+let g:ale_lint_on_enter = 1
+
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+" nmap <Leader>l :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+let g:ale_linters = {
+			\ 'go': ['golint', 'go vet', 'go fmt'],
+			\ }

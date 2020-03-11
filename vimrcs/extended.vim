@@ -20,13 +20,6 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" Colorscheme
-try
-    colorscheme molokai
-catch
-endtry
-set background=dark
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -50,6 +43,7 @@ inoremap $e ""<esc>i
 map <leader>ff :Files<cr> 
 map <leader>fb :Buffers<cr> 
 map <leader>fg :Ag<cr> 
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 
 " cscope
